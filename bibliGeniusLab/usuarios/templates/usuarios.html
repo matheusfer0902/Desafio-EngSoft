@@ -8,22 +8,20 @@
 {% block 'dashboard'%}
 <div class="form-container">
     <h2>Cadastre-se</h2>
-    <form id="registerForm">
-        <input type="text" placeholder="Nome completo" required>
-        <input type="email" placeholder="E-mail" required>
-        <input type="tel" placeholder="Telefone" required>
-        <input type="text" placeholder="Endereço" required>
-        <input type="password" placeholder="Senha" required>
-        <input type="password" placeholder="Confirmar senha" required>
+    <form id="registerForm" action="{% url 'usuarios' %}" method="POST">{% csrf_token %}
+        <input type="text" placeholder="Nome completo" required name="nome">
+        <input type="email" placeholder="E-mail" required name="email">
+        <input type="text" placeholder="Telefone" required name="telefone">
+        <input type="text" placeholder="Endereço" required name="endereco">
+        <input type="password" placeholder="Senha" required name="senha">
 
-        <!-- Dropdown para selecionar o tipo de usuário -->
-        <select required>
+        <select required name="tipo_usuario">
             <option value="" disabled selected>Select Role</option>
-            <option value="admin">Administrador</option>
-            <option value="reader">Leitor</option>
+            <option value="1">Administrador</option>
+            <option value="2">Leitor</option>
         </select>
 
-        <button type="submit" class="register-btn">Register</button>
+        <button type="submit" class="register-btn" onclick="send_data()">Register</button>
     </form>
     <a href="#" class="signin-link">Have account? Sign In</a>
 </div>
