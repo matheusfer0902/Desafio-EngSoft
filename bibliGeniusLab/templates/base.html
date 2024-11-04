@@ -17,10 +17,10 @@
   <body>
 
     <nav class="navbar">
-      <a href="navbar.html" class="home-link">Home</a>
+      <a href="{% url 'home' %}" class="home-link">Home</a>
       <div class="navbar-right">
-          <a href="#" class="login-link">Login</a>
-          <a href="#">Cadastro</a>
+          <a href="{% url 'login' %}" class="login-link">Login</a>
+          <a href="{% url 'cadastro_user' %}">Cadastro</a>
       </div>
     </nav>
       

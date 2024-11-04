@@ -1,0 +1,42 @@
+.card-container {
+    display: flex; /* Usar flexbox para centralizar */
+    align-items: center; /* Alinhamento vertical */
+    justify-content: center; /* Alinhamento horizontal */
+    height: 100vh; /* Altura da tela inteira */
+}
+
+.card {
+    background-color: white; /* Fundo branco para o card */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 24px; /* Espaçamento interno */
+    max-width: 300px; /* Largura máxima do card */
+    text-align: center; /* Alinhamento de texto ao centro */
+}
+
+.title {
+    font-size: 1.5rem; /* Tamanho da fonte do título */
+    font-weight: bold; /* Texto em negrito */
+    margin-bottom: 16px; /* Margem abaixo do título */
+}
+
+.message {
+    margin-bottom: 16px; /* Margem abaixo da mensagem */
+}
+
+.login-button {
+    background-color: #6a0dad; /* Cor de fundo azul */
+    color: white; /* Cor do texto branco */
+    padding: 8px 16px; /* Espaçamento interno do botão */
+    border: none; /* Remove a borda padrão */
+    border-radius: 4px; /* Bordas arredondadas para o botão */
+    text-decoration: none; /* Remove sublinhado do link */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+}
+
+.login-button:hover {
+    background-color: #ffffff; 
+    border: 1px solid #6a0dad;
+    text-decoration: none;
+    color: #6a0dad;
+}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+{% endblock %}
+
+{% block 'dashboard'%}
+    <div class="card-container">
+        <div class="card">
+            <h1 class="title">Bem vindo!</h1>
+            <p class="message">Faça login para começar a aplicação.</p>
+            <a href="{% url 'login' %}" class="login-button">Login</a>
+        </div>
+    </div>
+    <script src="{% static 'home/js/home.js' %}"></script>
+{% endblock %}
