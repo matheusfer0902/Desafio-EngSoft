@@ -2,13 +2,13 @@
 {% load static %}
 
 {% block 'head' %}
-    <link rel="stylesheet" href="{% static 'usuarios/css/usuarios.css' %}">
+    <link rel="stylesheet" href="{% static 'usuarios/css/create_usuarios.css' %}">
 {% endblock %}
 
 {% block 'dashboard'%}
 <div class="form-container">
     <h2>Cadastre-se</h2>
-    <form id="registerForm" action="{% url 'usuarios' %}" method="POST">{% csrf_token %}
+    <form id="registerForm" action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
         <input type="text" placeholder="Nome completo" required name="nome">
         <input type="email" placeholder="E-mail" required name="email">
         <input type="text" placeholder="Telefone" required name="telefone">
@@ -21,9 +21,9 @@
             <option value="2">Leitor</option>
         </select>
 
-        <button type="submit" class="register-btn" onclick="send_data()">Register</button>
+        <button type="submit" class="register-btn">Register</button>
     </form>
-    <a href="#" class="signin-link">Have account? Sign In</a>
+    <a href="{% url 'login' %}" class="signin-link">Have account? Sign In</a>
 </div>
-<script src="{% static 'usuarios/js/usuarios.js' %}"></script>
+<script src="{% static 'usuarios/js/create_usuarios.js' %}"></script>
 {% endblock %}

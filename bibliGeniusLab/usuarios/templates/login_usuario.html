@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'usuarios/css/login_usuario.css' %}">
+{% endblock %}
+
+{% block 'dashboard'%}
+<div class="form-container">
+    <h2>Login</h2>
+    <form id="registerForm" action="{% url 'login' %}" method="POST">{% csrf_token %}
+        <input type="email" placeholder="E-mail" required name="email">
+        <input type="password" placeholder="Senha" required name="senha">
+
+        <button type="submit" class="register-btn">Login</button>
+    </form>
+    <a href="{% url 'cadastro' %}" class="signup-link">Don't have an account? Sign Up</a>
+</div>
+<script src="{% static 'usuarios/js/login_usuarios.js' %}"></script>
+{% endblock %}

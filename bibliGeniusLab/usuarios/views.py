@@ -3,9 +3,9 @@ from django.http import HttpResponse
 from .models import Usuario
 import re
 
-def usuarios(request):
+def create_usuarios(request):
     if request.method == 'GET':
-        return render(request, 'usuarios.html')
+        return render(request, 'create_usuarios.html')
     elif request.method == 'POST':
         nome = request.POST.get('nome')
         email = request.POST.get('email')
@@ -31,3 +31,18 @@ def usuarios(request):
         usuario.save()
 
         return HttpResponse('Usuario Cadastrado')
+
+def login_view(request):
+    if request.method == 'GET':
+        return render(request, 'login_usuario.html')
+    elif request.method == 'POST':
+        email = request.POST.get('email')
+        senha = request.POST.get('senha')
+
+        email_usuario = Usuario.objects.filter(email=email)
+        senha_usuario = Usuario.objects.filter(senha=senha)
+
+        if email_usuario.exists() and senha_usuario.exists():
+            return HttpResponse('logado')
+        else:
+            return render(request, 'login_usuario.html')
