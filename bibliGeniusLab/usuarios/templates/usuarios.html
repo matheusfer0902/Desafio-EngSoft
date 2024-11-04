@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'usuarios/css/usuarios.css' %}">
+{% endblock %}
+
+{% block 'dashboard'%}
+<div class="form-container">
+    <h2>Cadastre-se</h2>
+    <form id="registerForm">
+        <input type="text" placeholder="Nome completo" required>
+        <input type="email" placeholder="E-mail" required>
+        <input type="tel" placeholder="Telefone" required>
+        <input type="text" placeholder="Endereço" required>
+        <input type="password" placeholder="Senha" required>
+        <input type="password" placeholder="Confirmar senha" required>
+
+        <!-- Dropdown para selecionar o tipo de usuário -->
+        <select required>
+            <option value="" disabled selected>Select Role</option>
+            <option value="admin">Administrador</option>
+            <option value="reader">Leitor</option>
+        </select>
+
+        <button type="submit" class="register-btn">Register</button>
+    </form>
+    <a href="#" class="signin-link">Have account? Sign In</a>
+</div>
+<script src="{% static 'usuarios/js/usuarios.js' %}"></script>
+{% endblock %}
