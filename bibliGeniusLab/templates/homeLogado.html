@@ -10,9 +10,9 @@
     {% for livro in livros %}
         <div class="livro-card">
             <h2 class="livro-titulo">{{ livro.titulo }}</h2>
-            <p class="livro-autor">{{ livro.autor }}</p>
-            <p class="livro-genero">{{ livro.genero }}</p>
-            <button class="livro-button">Ver Emprestimo</button>
+            <p class="livro-autor"><span style="color: #6a0dad;">Autor: </span>{{ livro.autor }}</p>
+            <p class="livro-genero"><span style="color: #6a0dad;">Gênero: </span>{{ livro.genero }}</p>
+            <a href="{% url 'cadastro_emprestimo' %}" class="livro-button">Emprestimo</a>
         </div>
     {% endfor %}
 </div>

@@ -10,7 +10,7 @@ class Estoque(models.Model):
         primary_key=True
     )
     quantidade_total = models.PositiveIntegerField(default=0)
-    quantidade_disponivel = models.PositiveIntegerField(editable=False)
+    quantidade_disponivel = models.PositiveIntegerField(default=0)
 
     def save(self, *args, **kwargs):
         if not self.pk:

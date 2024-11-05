@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from livros.models import Livro
+from estoque.models import Estoque
 
 def home(request):
     livros_list = Livro.objects.all()
