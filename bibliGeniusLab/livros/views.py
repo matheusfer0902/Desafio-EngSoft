@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Livro
 
@@ -26,4 +26,4 @@ def create_livro(request):
 
         livro.save()
 
-        return HttpResponse('Livro Cadastrado')
+        return redirect('adicionar_estoque', livro_id=livro.id)

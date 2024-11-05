@@ -1,0 +1,18 @@
+{% extends "baseLogado.html" %}
+{% load static %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'estoque/css/adicionar_estoque.css' %}">
+{% endblock %}
+
+{% block 'dashboard'%}
+<div class="form-container">
+    <h2>Registrar Estoque</h2>
+    <form id="registerForm" action="{% url 'adicionar_estoque' livro_id=livro_id %}" method="POST">{% csrf_token %}
+        <input type="number" placeholder="Quantidade total" required name="quantidade_total">
+
+        <button type="submit" class="register-btn">Registrar</button>
+    </form>
+</div>
+<script src="{% static 'estoque/css/adicionar_estoque.js' %}"></script>
+{% endblock %}
