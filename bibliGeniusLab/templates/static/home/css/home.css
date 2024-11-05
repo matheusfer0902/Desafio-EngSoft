@@ -39,5 +39,8 @@
 }
 
 .livro-button:hover {
-    background-color: #1e40af; /* Cor do botão ao passar o mouse */
+    background-color: #ffffff; /* Cor do botão ao passar o mouse */
+    text-decoration: none;
+    border: 1px solid #6a0dad;
+    color: #6a0dad;
 }

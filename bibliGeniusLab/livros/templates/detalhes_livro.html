@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'livros/css/detalhe_livro.css' %}">
+{% endblock %}
+
+{% block 'dashboard'%}
+<div class="livro-detalhe-container">
+    <div class="livro-detalhe-card">
+        <h2 class="livro-titulo">{{ livro.titulo }}</h2>
+        <p class="livro-autor"><span style="color: #6a0dad;">Autor: </span>{{ livro.autor }}</p>
+        <p class="livro-genero"><span style="color: #6a0dad;">Gênero: </span>{{ livro.genero }}</p>
+        <p class="livro-descricao"><span style="color: #6a0dad;">Descrição: </span>{{ livro.descricao }}</p>
+        <p class="livro-quantidade"><span style="color: #6a0dad;">Quantidade disponível: </span>{{ estoque.quantidade_disponivel }}</p>
+        <a href="{% url 'home' %}" class="voltar-button">Voltar</a>
+    </div>
+</div>
+<script src="{% static 'livros/js/detalhe_livro.js' %}"></script>
+{% endblock %}
