@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'usuarios/css/create_usuarios.css' %}">
+{% endblock %}
+
+{% block 'dashboard'%}
+<div class="form-container">
+    <h2>Cadastre-se</h2>
+    <form id="registerForm" action="{% url 'cadastro_user' %}" method="POST">{% csrf_token %}
+        <input type="text" placeholder="Nome completo" required name="nome">
+        <input type="email" placeholder="E-mail" required name="email">
+        <input type="text" placeholder="Telefone" required name="telefone">
+        <input type="text" placeholder="Endereço" required name="endereco">
+        <input type="password" placeholder="Senha" required name="senha">
+
+        <select required name="tipo_usuario">
+            <option value="" disabled selected>Select Role</option>
+            <option value="1">Administrador</option>
+            <option value="2">Leitor</option>
+        </select>
+
+        <button type="submit" class="register-btn">Register</button>
+    </form>
+    <a href="{% url 'login' %}" class="signin-link">Have account? Sign In</a>
+</div>
+<script src="{% static 'usuarios/js/create_usuarios.js' %}"></script>
+{% endblock %}

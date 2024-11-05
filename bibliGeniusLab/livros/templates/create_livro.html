@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'livros/css/create_livros.css' %}">
+{% endblock %}
+
+{% block 'dashboard'%}
+<div class="form-container">
+    <h2>Registrar Livro</h2>
+    <form id="registerForm" action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
+        <input type="text" placeholder="Titulo" required name="titulo">
+        <input type="text" placeholder="Autor" required name="autor">
+        <input type="text" placeholder="ISBN" required name="isbn">
+        <input type="text" placeholder="Editora" required name="editora">
+        <input type="date" placeholder="Data de publicação" required name="data_publicacao">
+        <input type="text" placeholder="Genero" required name="genero">
+        <input type="text" placeholder="Descrição" required name="descricao">
+
+        <button type="submit" class="register-btn">Registrar</button>
+    </form>
+</div>
+<script src="{% static 'livros/js/create_livros.js' %}"></script>
+{% endblock %}
