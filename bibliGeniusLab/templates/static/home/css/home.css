@@ -1,42 +1,43 @@
-.card-container {
-    display: flex; /* Usar flexbox para centralizar */
-    align-items: center; /* Alinhamento vertical */
-    justify-content: center; /* Alinhamento horizontal */
-    height: 100vh; /* Altura da tela inteira */
+.livros-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espaçamento entre os cards */
+    justify-content: center; /* Centraliza os cards horizontalmente */
+    margin: 0;
+    padding: 20px;
 }
 
-.card {
-    background-color: white; /* Fundo branco para o card */
-    border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    padding: 24px; /* Espaçamento interno */
-    max-width: 300px; /* Largura máxima do card */
-    text-align: center; /* Alinhamento de texto ao centro */
+.livro-card {
+    background-color: #ffffff; /* Cor de fundo do card */
+    border: 1px solid #6a0dad; /* Cor da borda do card */
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra do card */
+    width: 200px; /* Largura fixa do card */
+    text-align: center; /* Centraliza o texto dentro do card */
 }
 
-.title {
-    font-size: 1.5rem; /* Tamanho da fonte do título */
-    font-weight: bold; /* Texto em negrito */
-    margin-bottom: 16px; /* Margem abaixo do título */
+.livro-titulo {
+    color: #6a0dad; /* Cor do título do livro */
+    font-size: 1.5em; /* Tamanho do texto do título */
+    margin: 0; /* Remove margens */
 }
 
-.message {
-    margin-bottom: 16px; /* Margem abaixo da mensagem */
+.livro-autor, .livro-genero {
+    color: #000000; /* Cor preta padrão */
+    margin: 5px 0; /* Margem em cima e embaixo */
 }
 
-.login-button {
-    background-color: #6a0dad; /* Cor de fundo azul */
-    color: white; /* Cor do texto branco */
-    padding: 8px 16px; /* Espaçamento interno do botão */
+.livro-button {
+    background-color: #6a0dad; /* Cor do botão */
+    color: #ffffff; /* Cor do texto do botão */
     border: none; /* Remove a borda padrão */
-    border-radius: 4px; /* Bordas arredondadas para o botão */
-    text-decoration: none; /* Remove sublinhado do link */
-    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    border-radius: 5px; /* Bordas arredondadas do botão */
+    padding: 10px 15px; /* Espaçamento interno do botão */
+    cursor: pointer; /* Muda o cursor para mãozinha */
+    transition: background-color 0.3s; /* Transição suave para a cor do botão */
 }
 
-.login-button:hover {
-    background-color: #ffffff; 
-    border: 1px solid #6a0dad;
-    text-decoration: none;
-    color: #6a0dad;
+.livro-button:hover {
+    background-color: #1e40af; /* Cor do botão ao passar o mouse */
 }

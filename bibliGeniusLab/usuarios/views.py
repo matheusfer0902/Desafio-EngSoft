@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Usuario
 import re
+from livros.models import Livro
 
 def create_usuarios(request):
     if request.method == 'GET':
@@ -43,6 +44,7 @@ def login_view(request):
         senha_usuario = Usuario.objects.filter(senha=senha)
 
         if email_usuario.exists() and senha_usuario.exists():
-            return HttpResponse('logado')
+            livros_list = Livro.objects.all()
+            return render(request, 'homeLogado.html', {'livros': livros_list})
         else:
             return render(request, 'login_usuario.html')

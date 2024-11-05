@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "baseLogado.html" %}
 {% load static %}
 
 {% block 'head' %}
@@ -12,7 +12,7 @@
             <h2 class="livro-titulo">{{ livro.titulo }}</h2>
             <p class="livro-autor">{{ livro.autor }}</p>
             <p class="livro-genero">{{ livro.genero }}</p>
-            <button class="livro-button">Emprestimo</button>
+            <button class="livro-button">Ver Emprestimo</button>
         </div>
     {% endfor %}
 </div>
