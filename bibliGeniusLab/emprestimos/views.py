@@ -4,38 +4,37 @@ from django.db import transaction
 from usuarios.models import Usuario
 from livros.models import Livro
 from .models import Emprestimo
-from estoque.models import Estoque  # Importando o modelo Estoque
+from estoque.models import Estoque
 
 def cadastro_emprestimo(request):
     if request.method == 'GET':
-        usuario_list = Usuario.objects.all()
+        # Verifique se o usuário está logado e obtenha seu ID
+        usuario_logado = request.session.get('usuario_id')  # Supondo que o ID do usuário logado esteja armazenado na sessão
+        if not usuario_logado:
+            return redirect('login')  # Redireciona para login se o usuário não estiver logado
+
         livro_list = Livro.objects.all()
-        return render(request, 'create_emprestimo.html', {'usuarios': usuario_list, 'livros': livro_list})
+        return render(request, 'create_emprestimo.html', {'usuario_id': usuario_logado, 'livros': livro_list})
     
     elif request.method == 'POST':
-        # Captura os dados do formulário
-        usuario_id = request.POST.get('usuario')
+        # Agora você não precisa obter o usuário do formulário
+        usuario_id = request.session.get('usuario_id')
         livro_id = request.POST.get('livro')
         data_emprestimo = request.POST.get('data_empresitmo')
         data_devolucao = request.POST.get('data_devolucao')
         data_devolvido = request.POST.get('data_devolvido')
 
-        # Validando os campos obrigatórios
+        # Validação de campos obrigatórios
         if not (usuario_id and livro_id and data_emprestimo and data_devolucao):
             return HttpResponse("Todos os campos obrigatórios devem ser preenchidos.", status=400)
 
         try:
-            with transaction.atomic():  # Inicia uma transação para garantir a consistência dos dados
-                # Obtendo o usuário e o livro selecionados
+            with transaction.atomic():
                 usuario = Usuario.objects.get(id=usuario_id)
                 livro = Livro.objects.get(id=livro_id)
-                
-                # Obtendo o estoque do livro
                 estoque = Estoque.objects.get(id_livro=livro)
 
-                # Verificando se há quantidade disponível em estoque
                 if estoque.quantidade_disponivel > 0:
-                    # Criando o novo registro de empréstimo
                     emprestimo = Emprestimo.objects.create(
                         usuario=usuario,
                         livro=livro,
@@ -43,12 +42,8 @@ def cadastro_emprestimo(request):
                         data_devolucao=data_devolucao,
                         data_devolvido=data_devolvido,
                     )
-
-                    # Diminuindo a quantidade disponível do livro em 1 no estoque
                     estoque.quantidade_disponivel -= 1
                     estoque.save()
-
-                    # Redirecionando para uma página de sucesso ou outro local após o cadastro
                     return HttpResponse('sucesso_emprestimo')
                 else:
                     return HttpResponse("Livro indisponível para empréstimo.", status=400)

@@ -60,5 +60,7 @@ body {
 }
 
 .navbar .navbar-right .login-link:hover {
-    background-color: #5500b3;
+    background-color: #ffffff;
+    border: 1px solid #6a0dad;
+    color: #6a0dad;
 }
