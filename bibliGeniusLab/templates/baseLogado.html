@@ -19,8 +19,12 @@
     <nav class="navbar">
       <a href="{% url 'homeLogado' %}" class="home-link">Home</a>
       <div class="navbar-right">
-          <a href="{% url 'perfil_usuario' %}">Meu perfil</a>
-          <a href="{% url 'home' %}" class="login-link">Sair</a>
+        {% if request.session.tipo_usuario == 1 %}
+          <!-- Exibe o botão apenas para o usuário administrador -->
+          <a href="{% url 'cadastro' %}" class="nav-button">Cadastrar Livro</a>
+        {% endif %}
+        <a href="{% url 'perfil_usuario' %}">Meu perfil</a>
+        <a href="{% url 'home' %}" class="login-link">Sair</a>
       </div>
     </nav>
       

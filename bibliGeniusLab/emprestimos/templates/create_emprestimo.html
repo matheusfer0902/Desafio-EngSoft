@@ -7,35 +7,33 @@
 
 {% block 'dashboard'%}
 <div class="form-container">
-    <h2>Realizar emprestimo</h2>
-    <form id="registerForm" action="{% url 'cadastro_emprestimo' %}" method="POST">{% csrf_token %}
-        <select required name="usuario">
-            <option value="" disabled selected>Selecione o usuario</option>
-            {% for usuario in usuarios %}
-            <option value="{{usuario.id}}">{{usuario.nome}}</option>
-            {% endfor %}
-        </select>
+    <h2>Realizar Empréstimo</h2>
+    <form id="registerForm" action="{% url 'cadastro_emprestimo' %}" method="POST">
+        {% csrf_token %}
+        
+        <!-- Campo oculto para enviar o usuario_id do usuário logado -->
+        <input type="hidden" name="usuario" value="{{ usuario_id }}">
 
         <select required name="livro">
             <option value="" disabled selected>Selecione o livro</option>
             {% for livro in livros %}
-            <option value="{{livro.id}}">{{livro.titulo}}</option>
+            <option value="{{ livro.id }}">{{ livro.titulo }}</option>
             {% endfor %}
         </select>
 
         <label for="data_empresitmo">
-            Data de emprestimo
-            <input type="date" placeholder="Data de emprestimo" required name="data_empresitmo">
+            Data de Empréstimo
+            <input type="date" placeholder="Data de Empréstimo" required name="data_empresitmo">
         </label>
         
         <label for="data_devolucao">
-            Data de devolução máxima
-            <input type="date" placeholder="Data de devolução" required name="data_devolucao">
+            Data de Devolução Máxima
+            <input type="date" placeholder="Data de Devolução" required name="data_devolucao">
         </label>
 
         <label for="data_devolvido">
-            Data de devolução
-            <input type="date" placeholder="Data de devolvido" required name="data_devolvido">
+            Data de Devolução
+            <input type="date" placeholder="Data de Devolução" required name="data_devolvido">
         </label>
 
         <button type="submit" class="register-btn">Confirmar</button>

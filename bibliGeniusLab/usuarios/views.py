@@ -32,7 +32,7 @@ def create_usuarios(request):
 
         usuario.save()
 
-        return HttpResponse('Usuario Cadastrado')
+        return redirect('home')
 
 def login_view(request):
     if request.method == 'POST':
@@ -42,7 +42,8 @@ def login_view(request):
             usuario = Usuario.objects.get(email=email, senha=senha)
             # Armazena o ID do usuário na sessão
             request.session['usuario_id'] = usuario.id
-            return redirect('perfil_usuario')
+            request.session['tipo_usuario'] = usuario.tipo_usuario
+            return redirect('homeLogado')
         except Usuario.DoesNotExist:
             # Tratar o caso em que o usuário não é encontrado
             return render(request, 'login_usuario.html', {'error': 'Email ou senha inválidos'})
